@@ -15,7 +15,6 @@ socket.on('connect', () => {
       window.location.href = '/'
       console.error(err)
     } else {
-      console.log('no error');
     }
   })
   socket.emit('createMessage', () => {
@@ -24,6 +23,17 @@ socket.on('connect', () => {
 
 socket.on('disconnect', () => {
   console.log('disconnected')
+})
+
+socket.on('updateUserList', (users) => {
+  let $users = document.querySelector('#users')
+  $users.innerHTML = ''    
+
+  users.forEach((user) => {
+    let $li = document.createElement('li')
+    $li.innerHTML = user
+    $users.append($li)
+  })
 })
 
 socket.on('newMessage', (message) => {
@@ -45,7 +55,6 @@ $form.addEventListener('submit', (e) => {
   let $message = document.querySelector('[name=message]')
 
   socket.emit('createMessage', {
-    from: 'User',
     text: $message.value
   }, function () {
     $message.value = ''

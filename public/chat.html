@@ -14,7 +14,9 @@
         <div class="chat__sidebar">
             <h3>People</h3>
             <hr>
-            <div id="users"></div>
+            <div>
+                <ol id="users"></ol>
+            </div>
         </div>
         <div class="chat__main">
             <ol id="messages" class="chat__messages"></ol>
@@ -41,7 +43,7 @@
 
     <script src="socket.io/socket.io.js"></script>
     <script src="./lib/mustache.min.js"></script>
-    <script src="./lib/moment.js"></script>
+    <script src="./lib/moment.min.js"></script>
     <script src="./helpers/url-parser.js"></script>
     <script src="./helpers/html-parser.js"></script>
     <script src="./scripts/chat.js"></script>
